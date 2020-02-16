@@ -1,0 +1,62 @@
+﻿<metro:MetroWindow
+    x:Class="StorageUtil.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:StorageUtil.Views"
+	xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+	xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+	xmlns:prism="http://prismlibrary.com/"
+	mc:Ignorable="d"
+	GlowBrush="Black"
+	BorderThickness="0"
+	ResizeMode="CanResizeWithGrip"
+	prism:ViewModelLocator.AutoWireViewModel="True"
+    Title="MainWindow" Height="450" Width="800">
+
+	<metro:MetroWindow.Resources>
+		<ResourceDictionary>
+
+		</ResourceDictionary>
+	</metro:MetroWindow.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<ToolBarTray Grid.Row="0">
+			<ToolBar Band="1" BandIndex="1">
+				<Button>
+					<iconPacks:PackIconMaterial Kind="Azure" />
+				</Button>
+				<Button>
+					<iconPacks:PackIconOcticons Kind="FileMedia" />
+				</Button>
+				<Button>
+					<iconPacks:PackIconMaterial Kind="Azure" />
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
+
+
+
+		<Grid Grid.Row="1" Margin="12">
+
+		</Grid>
+
+		<StatusBar Grid.Row="2">
+			<StatusBarItem DockPanel.Dock="Right">
+				<TextBlock Text="{Binding AppVersion}" Margin="0,0,15,0" VerticalAlignment="Center" />
+			</StatusBarItem>
+
+			<StatusBarItem>
+				<TextBlock Text="{Binding AppStatus}" VerticalAlignment="Center" />
+			</StatusBarItem>
+		</StatusBar>
+	</Grid>
+
+
+</metro:MetroWindow>

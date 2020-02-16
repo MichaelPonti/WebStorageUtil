@@ -25,7 +25,7 @@ namespace StorageUtil
 
 		protected override Window CreateShell()
 		{
-			var w = Container.Resolve<MainWindow>();
+			var w = Container.Resolve<Views.MainWindow>();
 			return w;
 		}
 
