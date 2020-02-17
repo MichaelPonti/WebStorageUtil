@@ -17,5 +17,20 @@ namespace StorageUtil.ViewModels
 		{
 			_settingsService = settingsService;
 		}
+
+
+		#region LoadAction
+
+		private ViewUtils.DelegateViewLoadedAction _loadAction = null;
+		public ViewUtils.DelegateViewLoadedAction LoadAction =>
+			_loadAction ?? (_loadAction = new ViewUtils.DelegateViewLoadedAction(LoadActionExecute));
+
+		private async void LoadActionExecute()
+		{
+			var settings = await _settingsService.ReadSettingsAsync();
+		}
+
+
+		#endregion
 	}
 }
