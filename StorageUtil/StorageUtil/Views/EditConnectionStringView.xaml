@@ -1,0 +1,50 @@
+﻿<UserControl
+	x:Class="StorageUtil.Views.EditConnectionStringView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:local="clr-namespace:StorageUtil.Views"
+	xmlns:prism="http://prismlibrary.com/"
+	mc:Ignorable="d" 
+	Margin="12,24,12,12"
+	d:DesignHeight="250" d:DesignWidth="300"
+	prism:ViewModelLocator.AutoWireViewModel="True"
+>
+	<Grid Margin="4">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Text="Connection String" VerticalAlignment="Center" Margin="4,0,8,0" />
+		<TextBox
+			Grid.Row="0"
+			Grid.Column="1"
+			Text="{Binding ConnectionString,UpdateSourceTrigger=PropertyChanged}"
+			Margin="0,4,0,4"
+		/>
+
+
+		<StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12">
+			<Button
+				Command="{Binding CommandDone}"
+				Width="{StaticResource buttonWidth}"
+				Height="{StaticResource buttonHeight}"
+				Content="APPLY"
+				Margin="8,0"
+			/>
+
+			<Button
+				Command="{Binding CommandCancel}"
+				Width="{StaticResource buttonWidth}"
+				Height="{StaticResource buttonHeight}"
+				Content="CANCEL"
+			/>
+		</StackPanel>
+	</Grid>
+</UserControl>

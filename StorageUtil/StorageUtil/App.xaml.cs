@@ -1,4 +1,5 @@
 ﻿using Prism.Ioc;
+using Prism.Regions;
 using Prism.Unity;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,18 @@ namespace StorageUtil
 		}
 
 
+
+		private void RegisterAppViews()
+		{
+			var regionManager = Container.Resolve<IRegionManager>();
+			regionManager.RegisterViewWithRegion("editConnectionStringView", typeof(Views.EditConnectionStringView));
+		}
+
+
 		protected override Window CreateShell()
 		{
+			RegisterAppViews();
+
 			var w = Container.Resolve<Views.MainWindow>();
 			return w;
 		}
@@ -32,6 +43,7 @@ namespace StorageUtil
 
 		protected override void RegisterTypes(IContainerRegistry containerRegistry)
 		{
+			containerRegistry.RegisterForNavigation<Views.EditConnectionStringView>();
 		}
 	}
 }
