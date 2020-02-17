@@ -52,6 +52,12 @@ namespace StorageUtil.ViewModels
 			set => SetProperty<bool>(ref _isConnectionStringOpen, value);
 		}
 
+		private bool _isSettingsOpen = false;
+		public bool IsSettingsOpen
+		{
+			get => _isSettingsOpen;
+			set => SetProperty<bool>(ref _isSettingsOpen, value);
+		}
 
 
 		#endregion
@@ -60,7 +66,7 @@ namespace StorageUtil.ViewModels
 
 		private DelegateCommand _commandOpenConnectionString = null;
 		public DelegateCommand CommandOpenConnectionString =>
-			_commandOpenConnectionString ?? (_commandOpenConnectionString = new DelegateCommand(CommandOpenConnectionStringExecute, CommandOpenConnectionStringCanExecute));
+			_commandOpenConnectionString ?? (_commandOpenConnectionString = new DelegateCommand(CommandOpenConnectionStringExecute));
 
 
 		private void CommandOpenConnectionStringExecute()
@@ -68,9 +74,18 @@ namespace StorageUtil.ViewModels
 			IsConnectionStringOpen = true;
 		}
 
-		private bool CommandOpenConnectionStringCanExecute()
+		#endregion
+
+		#region OpenSettings
+
+		private DelegateCommand _commandOpenSettings = null;
+		public DelegateCommand CommandOpenSettings =>
+			_commandOpenSettings ?? (_commandOpenSettings = new DelegateCommand(CommandOpenSettingsExecute));
+
+
+		private void CommandOpenSettingsExecute()
 		{
-			return true;
+			IsSettingsOpen = true;
 		}
 
 		#endregion

@@ -29,6 +29,9 @@ namespace StorageUtil
 		{
 			var regionManager = Container.Resolve<IRegionManager>();
 			regionManager.RegisterViewWithRegion("editConnectionStringView", typeof(Views.EditConnectionStringView));
+			regionManager.RegisterViewWithRegion("browserView", typeof(Views.BrowserView));
+			regionManager.RegisterViewWithRegion("detailsView", typeof(Views.DetailsView));
+			regionManager.RegisterViewWithRegion("settingsView", typeof(Views.SettingsView));
 		}
 
 
@@ -44,6 +47,9 @@ namespace StorageUtil
 		protected override void RegisterTypes(IContainerRegistry containerRegistry)
 		{
 			containerRegistry.RegisterForNavigation<Views.EditConnectionStringView>();
+
+			var settingsService = new Services.Settings.FileSettingsService();
+			containerRegistry.RegisterInstance<Services.Settings.ISettingsService>(settingsService);
 		}
 	}
 }
