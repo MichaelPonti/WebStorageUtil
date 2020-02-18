@@ -44,11 +44,12 @@ namespace StorageUtil
 		}
 
 
-		protected override void RegisterTypes(IContainerRegistry containerRegistry)
+		protected override async void RegisterTypes(IContainerRegistry containerRegistry)
 		{
 			containerRegistry.RegisterForNavigation<Views.EditConnectionStringView>();
 
 			var settingsService = new Services.Settings.FileSettingsService();
+			await settingsService.InitializeAsync();
 			containerRegistry.RegisterInstance<Services.Settings.ISettingsService>(settingsService);
 		}
 	}

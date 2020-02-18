@@ -24,11 +24,25 @@
 
 	<metro:MetroWindow.Flyouts>
 		<metro:FlyoutsControl>
-			<metro:Flyout Position="Top" IsModal="True" IsOpen="{Binding IsConnectionStringOpen}" Theme="Adapt" Margin="20,0,20,0">
+			<metro:Flyout
+				Position="Top"
+				Header="Edit Connection String"
+				IsModal="True"
+				IsOpen="{Binding IsConnectionStringOpen}"
+				Theme="Adapt"
+				Margin="20,0,20,0"
+			>
 				<ContentControl prism:RegionManager.RegionName="editConnectionStringView" />
 			</metro:Flyout>
 
-			<metro:Flyout Position="Left" IsModal="True" IsOpen="{Binding IsSettingsOpen}" Theme="Adapt">
+			<metro:Flyout
+				Position="Left"
+				IsModal="True"
+				IsOpen="{Binding IsSettingsOpen}"
+				Theme="Adapt"
+				Header="SETTINGS"
+				Width="350"
+			>
 				<ContentControl prism:RegionManager.RegionName="settingsView" />
 			</metro:Flyout>
 		</metro:FlyoutsControl>

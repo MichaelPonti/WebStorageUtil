@@ -8,6 +8,7 @@ namespace StorageUtil.Services.Settings
 {
 	public interface ISettingsService
 	{
+		string SettingsDirectory { get; }
 		Task InitializeAsync();
 		Task SaveSettingsAsync(SettingsData data);
 		Task<SettingsData> ReadSettingsAsync();

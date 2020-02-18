@@ -6,12 +6,45 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:local="clr-namespace:StorageUtil.Views"
 	xmlns:vu="clr-namespace:StorageUtil.ViewUtils"
+	xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
 	xmlns:prism="http://prismlibrary.com/"
 	mc:Ignorable="d"
 	vu:LoadedBindings.LoadAction="{Binding LoadAction}"
 	prism:ViewModelLocator.AutoWireViewModel="True"
-	d:DesignHeight="450" d:DesignWidth="800">
-	<Grid>
-		<TextBlock Text="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" />
+	d:DesignHeight="450" d:DesignWidth="300">
+	<Grid Margin="8">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<ListView
+			ItemsSource="{Binding MimeTypes}"
+			SelectedItem="{Binding SelectedMimeType}"
+			BorderThickness="1"
+		>
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Extension" Width="100" DisplayMemberBinding="{Binding FileExtension}" />
+					<GridViewColumn Header="Mime" Width="100" DisplayMemberBinding="{Binding MimeType}" />
+				</GridView>
+			</ListView.View>
+		</ListView>
+
+		<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,8,0,0">
+			<Button
+				Content="SAVE"
+				Command="{Binding CommandSave}"
+				Width="{StaticResource buttonWidth}"
+				Height="{StaticResource buttonHeight}"
+			/>
+
+			<Button Command="{Binding CommandOpenDir}">
+				<iconPacks:PackIconOcticons Kind="FileSymlinkDirectory" />
+			</Button>
+		</StackPanel>
 	</Grid>
 </UserControl>

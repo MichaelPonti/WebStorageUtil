@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,18 @@ namespace StorageUtil.Services.Settings
 		public FileSettingsService(string nominalFilename = null)
 		{
 			_nominalFilename = nominalFilename ?? "settings.json";
+		}
+
+
+		public string SettingsDirectory
+		{
+			get
+			{
+				if (String.IsNullOrWhiteSpace(_fullFilename))
+					return null;
+
+				return Path.GetDirectoryName(_fullFilename);
+			}
 		}
 
 		public async Task InitializeAsync()
@@ -40,7 +53,12 @@ namespace StorageUtil.Services.Settings
 		private async Task InitializeFileAsync()
 		{
 			SettingsData d = new SettingsData();
-			d.FileTypes.Add(new FileSetting(".js", "text/script"));
+			d.FileTypes.Add(new FileSetting(".js", "application/javascript"));
+			d.FileTypes.Add(new FileSetting(".png", "image/png"));
+			d.FileTypes.Add(new FileSetting(".jpg", "image/jpg"));
+			d.FileTypes.Add(new FileSetting(".css", "text/css"));
+			d.FileTypes.Add(new FileSetting(".html", "text/html"));
+			d.FileTypes.Add(new FileSetting(".htm", "text/html"));
 			await SaveSettingsAsync(d);
 		}
 
@@ -61,12 +79,18 @@ namespace StorageUtil.Services.Settings
 
 		public async Task SaveSettingsAsync(SettingsData data)
 		{
-			using (StreamWriter w = new StreamWriter(_fullFilename, false, Encoding.UTF8))
+			try
 			{
-				string s = JsonConvert.SerializeObject(data);
-				await w.WriteAsync(s);
-				await w.FlushAsync();
-				w.Close();
+				using (StreamWriter w = new StreamWriter(_fullFilename, false, Encoding.UTF8))
+				{
+					string s = JsonConvert.SerializeObject(data);
+					await w.WriteAsync(s);
+					w.Close();
+				}
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.ToString());
 			}
 		}
 	}
