@@ -21,6 +21,7 @@ namespace StorageUtil.Messages
 		public CloseFlyoutMessageArgs(FlyoutEnum flyout, object data = null)
 		{
 			Flyout = flyout;
+			Data = data;
 		}
 	}
 
