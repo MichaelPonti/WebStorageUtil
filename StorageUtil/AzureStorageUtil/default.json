@@ -1,0 +1,28 @@
+{
+	"extensions": [
+		{
+			"extension": ".js",
+			"mime": "application/javascript"
+		},
+		{
+			"extension": ".png",
+			"mime": "image/png"
+		},
+		{
+			"extension": ".jpg",
+			"mime": "image/jpg"
+		},
+		{
+			"extension": ".css",
+			"mime": "text/css"
+		},
+		{
+			"extension": ".html",
+			"mime": "text/html"
+		},
+		{
+			"extension": ".htm",
+			"mime": "text/html"
+		}
+	]
+}

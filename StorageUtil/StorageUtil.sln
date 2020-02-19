@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageUtil", "StorageUtil\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageUtil.Tests", "StorageUtil.Tests\StorageUtil.Tests.csproj", "{1EDB17B9-B705-4B6A-A74F-4E03F9FEF756}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureStorageUtil", "AzureStorageUtil\AzureStorageUtil.csproj", "{3F8FD09D-5AD7-49E9-9456-3C82860DDE3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1EDB17B9-B705-4B6A-A74F-4E03F9FEF756}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EDB17B9-B705-4B6A-A74F-4E03F9FEF756}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EDB17B9-B705-4B6A-A74F-4E03F9FEF756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8FD09D-5AD7-49E9-9456-3C82860DDE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8FD09D-5AD7-49E9-9456-3C82860DDE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8FD09D-5AD7-49E9-9456-3C82860DDE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8FD09D-5AD7-49E9-9456-3C82860DDE3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
