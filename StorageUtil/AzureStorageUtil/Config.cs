@@ -10,6 +10,6 @@ namespace AzureStorageUtil
 	class Config
 	{
 		[JsonProperty("extensions")]
-		List<MimeType> Extensions { get; set; }
+		public List<MimeType> Extensions { get; set; }
 	}
 }

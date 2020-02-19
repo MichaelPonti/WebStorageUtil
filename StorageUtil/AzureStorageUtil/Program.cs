@@ -3,6 +3,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,28 @@ namespace AzureStorageUtil
 			foreach(var blob in blobs)
 			{
 				Console.WriteLine(blob.Uri.AbsoluteUri + " being processed");
+				string mime = GetMimeType(config, blob.Uri.AbsoluteUri);
+				if (!String.IsNullOrWhiteSpace(mime))
+				{
+					Console.WriteLine($"Setting content-type to {mime}");
+					blob.Properties.ContentType = mime;
+					blob.SetProperties();
+				}
 			}
+
+
+			Console.WriteLine("Finished processing");
+		}
+
+		static string GetMimeType(Config config, string absoluteUri)
+		{
+			string extension = Path.GetExtension(absoluteUri);
+			var mimeSetting = (from m in config.Extensions
+							   where String.Compare(m.Extension, extension, StringComparison.InvariantCultureIgnoreCase) == 0
+							   select m)
+							   .FirstOrDefault();
+
+			return mimeSetting?.Mime;
 		}
 	}
 }
