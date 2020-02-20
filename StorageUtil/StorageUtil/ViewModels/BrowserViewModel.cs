@@ -34,7 +34,9 @@ namespace StorageUtil.ViewModels
 			switch(args.Flyout)
 			{
 				case Messages.FlyoutEnum.ConnectionString:
-					RefreshBlobListing((string) args.Data);
+					string connectionString = (string) args.Data;
+					if (!String.IsNullOrWhiteSpace(connectionString))
+						RefreshBlobListing(connectionString);
 					break;
 			}
 		}

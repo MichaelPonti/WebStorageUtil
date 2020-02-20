@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionContentTypes.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="ConfigService.cs" />
     <Compile Include="MimeType.cs" />

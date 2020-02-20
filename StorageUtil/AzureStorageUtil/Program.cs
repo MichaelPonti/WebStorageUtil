@@ -38,30 +38,39 @@ namespace AzureStorageUtil
 
 		static void RunWithOptions(Options options)
 		{
-			var configService = new ConfigService();
-			var config = configService.Read(options.ConfigFile);
-
-			var storageAccount = CloudStorageAccount.Parse(options.ConnectionString);
-			var blobClient = storageAccount.CreateCloudBlobClient();
-			var blobs = blobClient
-				.GetContainerReference(options.Container)
-				.ListBlobs(useFlatBlobListing: true)
-				.OfType<CloudBlockBlob>();
-
-			foreach(var blob in blobs)
+			if (String.Compare(options.Action, Options.ActionContentType, StringComparison.InvariantCultureIgnoreCase) == 0)
 			{
-				Console.WriteLine(blob.Uri.AbsoluteUri + " being processed");
-				string mime = GetMimeType(config, blob.Uri.AbsoluteUri);
-				if (!String.IsNullOrWhiteSpace(mime))
-				{
-					Console.WriteLine($"Setting content-type to {mime}");
-					blob.Properties.ContentType = mime;
-					blob.SetProperties();
-				}
+				ActionContentTypes.Run(options);
+			}
+			else if (String.Compare(options.Action, Options.ActionUpload, StringComparison.InvariantCultureIgnoreCase) == 0)
+			{
+			}
+			else
+			{
+				Console.WriteLine("Unknown action specified in --action");
 			}
 
+			//var configService = new ConfigService();
+			//var config = configService.Read(options.ConfigFile);
 
-			Console.WriteLine("Finished processing");
+			//var storageAccount = CloudStorageAccount.Parse(options.ConnectionString);
+			//var blobClient = storageAccount.CreateCloudBlobClient();
+			//var blobs = blobClient
+			//	.GetContainerReference(options.Container)
+			//	.ListBlobs(useFlatBlobListing: true)
+			//	.OfType<CloudBlockBlob>();
+
+			//foreach(var blob in blobs)
+			//{
+			//	Console.WriteLine(blob.Uri.AbsoluteUri + " being processed");
+			//	string mime = GetMimeType(config, blob.Uri.AbsoluteUri);
+			//	if (!String.IsNullOrWhiteSpace(mime))
+			//	{
+			//		Console.WriteLine($"Setting content-type to {mime}");
+			//		blob.Properties.ContentType = mime;
+			//		blob.SetProperties();
+			//	}
+			//}
 		}
 
 		static string GetMimeType(Config config, string absoluteUri)
