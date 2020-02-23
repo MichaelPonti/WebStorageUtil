@@ -11,15 +11,6 @@ namespace AzureStorageUtil
 {
 	class ActionContentTypes
 	{
-		private Options _options = null;
-
-
-		public ActionContentTypes(Options options)
-		{
-			_options = options;
-		}
-
-
 		public static bool ValidateOptions(Options options)
 		{
 			bool valid = true;

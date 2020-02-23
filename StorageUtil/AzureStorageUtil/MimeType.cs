@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AzureStorageUtil
 {
-	class MimeType
+	public class MimeType
 	{
 		public string Extension { get; set; }
 		public string Mime { get; set; }

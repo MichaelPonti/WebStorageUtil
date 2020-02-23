@@ -44,6 +44,7 @@ namespace AzureStorageUtil
 			}
 			else if (String.Compare(options.Action, Options.ActionUpload, StringComparison.InvariantCultureIgnoreCase) == 0)
 			{
+				ActionUpload.Run(options);
 			}
 			else
 			{
